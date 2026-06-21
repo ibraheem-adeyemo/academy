@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { trackList } from "@/lib/tracks";
 import Badge from "@/components/Badge";
+import AdminFilters from "@/components/AdminFilters";
 
 const statuses = ["PENDING", "REVIEWED", "ACCEPTED", "REJECTED"] as const;
 
@@ -36,41 +37,12 @@ export default async function AdminApplicationsPage({
         {applications.length === 1 ? "" : "s"}
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <FilterLink
-          label="All statuses"
-          href="/admin"
-          active={!status}
-          keepTrack={track}
-        />
-        {statuses.map((s) => (
-          <FilterLink
-            key={s}
-            label={s}
-            href={`/admin?status=${s}`}
-            active={status === s}
-            keepTrack={track}
-          />
-        ))}
-      </div>
-
-      <div className="mt-3 flex flex-wrap gap-3">
-        <FilterLink
-          label="All tracks"
-          href="/admin"
-          active={!track}
-          keepStatus={status}
-        />
-        {trackList.map((t) => (
-          <FilterLink
-            key={t.slug}
-            label={t.title}
-            href={`/admin?track=${encodeURIComponent(t.title)}`}
-            active={track === t.title}
-            keepStatus={status}
-          />
-        ))}
-      </div>
+      <AdminFilters
+        trackOptions={trackList.map((t) => ({
+          value: t.title,
+          label: t.title,
+        }))}
+      />
 
       <div className="mt-8 overflow-x-auto rounded-card border border-gray-200">
         <table className="w-full min-w-[640px] text-left text-sm">
@@ -121,42 +93,5 @@ export default async function AdminApplicationsPage({
         </table>
       </div>
     </div>
-  );
-}
-
-function FilterLink({
-  label,
-  href,
-  active,
-  keepStatus,
-  keepTrack,
-}: {
-  label: string;
-  href: string;
-  active: boolean;
-  keepStatus?: string;
-  keepTrack?: string;
-}) {
-  let finalHref = href;
-  if (keepStatus && !href.includes("status=")) {
-    finalHref += href.includes("?") ? `&status=${keepStatus}` : `?status=${keepStatus}`;
-  }
-  if (keepTrack && !href.includes("track=")) {
-    finalHref += href.includes("?")
-      ? `&track=${encodeURIComponent(keepTrack)}`
-      : `?track=${encodeURIComponent(keepTrack)}`;
-  }
-
-  return (
-    <Link
-      href={finalHref}
-      className={`rounded-btn px-3 py-1.5 text-sm font-medium transition-colors ${
-        active
-          ? "bg-primary text-white"
-          : "border border-gray-300 text-dark-text hover:border-primary hover:text-primary"
-      }`}
-    >
-      {label}
-    </Link>
   );
 }
