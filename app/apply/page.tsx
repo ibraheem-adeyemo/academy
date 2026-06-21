@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IconClock, IconSchool, IconUsers } from "@tabler/icons-react";
 import SectionHeader from "@/components/SectionHeader";
 import FadeIn from "@/components/FadeIn";
+import ApplicationForm from "@/components/ApplicationForm";
 
 export const metadata: Metadata = {
   title: "Apply — TopStack Academy",
@@ -25,14 +26,8 @@ export default function ApplyPage() {
             subheading="Fill in the form below. We'll review your application and get back to you within 24 hours via WhatsApp or email."
           />
         </FadeIn>
-{/* https://tally.so/r/7RjlkR */}
-        <FadeIn delay={0.1} className="mt-10 overflow-hidden rounded-card border border-gray-200">
-          <iframe
-            src="https://tally.so/embed/7RjlkR"
-            title="TopStack Academy application form"
-            className="h-[800px] w-full"
-            loading="lazy"
-          />
+        <FadeIn delay={0.1} className="mt-10">
+          <ApplicationForm />
         </FadeIn>
 
         <FadeIn
