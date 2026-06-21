@@ -1,9 +1,12 @@
 import { config } from "dotenv";
 import bcrypt from "bcryptjs";
+import { neonConfig } from "@neondatabase/serverless";
 import { PrismaClient } from "../generated/prisma";
 import { PrismaNeon } from "@prisma/adapter-neon";
+import ws from "ws";
 
 config({ path: ".env.local" });
+neonConfig.webSocketConstructor = ws;
 
 const adapter = new PrismaNeon({
   connectionString: process.env.DATABASE_URL!,
