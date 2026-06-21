@@ -1,12 +1,11 @@
 import Link from "next/link";
+import type { ApplicationStatus } from "@/generated/prisma";
 import { prisma } from "@/lib/db";
 import { trackList } from "@/lib/tracks";
 import Badge from "@/components/Badge";
 import AdminFilters from "@/components/AdminFilters";
 
-const statuses = ["PENDING", "REVIEWED", "ACCEPTED", "REJECTED"] as const;
-
-const statusVariant: Record<(typeof statuses)[number], "green" | "orange"> = {
+const statusVariant: Record<ApplicationStatus, "green" | "orange"> = {
   PENDING: "orange",
   REVIEWED: "orange",
   ACCEPTED: "green",
@@ -23,7 +22,7 @@ export default async function AdminApplicationsPage({
 
   const applications = await prisma.application.findMany({
     where: {
-      ...(status ? { status: status as (typeof statuses)[number] } : {}),
+      ...(status ? { status: status as ApplicationStatus } : {}),
       ...(track ? { track } : {}),
     },
     orderBy: { createdAt: "desc" },
