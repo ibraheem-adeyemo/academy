@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IconChevronDown, IconMenu2, IconX } from "@tabler/icons-react";
 
 const courseLinks = [
+  { label: "Free Stack", href: "/freestack" },
   { label: "Frontend", href: "/frontend" },
   { label: "Backend", href: "/backend" },
   { label: "Fullstack", href: "/fullstack" },

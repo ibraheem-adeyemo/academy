@@ -62,7 +62,22 @@ export const faqs: Faq[] = [
   {
     question: "Which track should I pick if I'm a complete beginner?",
     answer:
-      "Start with Frontend if you're drawn to visual design and UI. Start with Backend if you love logic and systems. If you're unsure, the Fullstack track covers both — just be prepared for 6 months of commitment.",
+      "Start with Frontend if you're drawn to visual design and UI. Start with Backend if you love logic and systems. If you're unsure, the Fullstack track covers both — just be prepared for 6 months of commitment. Not ready to commit at all? Start with Free Stack.",
+  },
+  {
+    question: "Is Free Stack actually free?",
+    answer:
+      "Yes — 100% free, no hidden fees, no card required. We'd rather you try real web development with us before spending any money on a paid track.",
+  },
+  {
+    question: "What happens after Free Stack ends?",
+    answer:
+      "You'll leave with real fundamentals and a live project. You're welcome to apply for Frontend, Backend, or Fullstack afterward, but there's no obligation to continue.",
+  },
+  {
+    question: "How is Free Stack different from the paid tracks?",
+    answer:
+      "Free Stack covers core web fundamentals in 8 weeks with one capstone project. The paid tracks go much deeper — full curricula, multiple portfolio projects, and career support — over 3 to 6 months.",
   },
 ];
 
@@ -72,7 +87,10 @@ function pickFaqs(questions: string[]): Faq[] {
   );
 }
 
-export const trackFaqs: Record<"frontend" | "backend" | "fullstack", Faq[]> = {
+export const trackFaqs: Record<
+  "frontend" | "backend" | "fullstack" | "freestack",
+  Faq[]
+> = {
   frontend: pickFaqs([
     "Do I need any coding experience to join?",
     "How much time do I need per week?",
@@ -87,5 +105,10 @@ export const trackFaqs: Record<"frontend" | "backend" | "fullstack", Faq[]> = {
     "Which track should I pick if I'm a complete beginner?",
     "Is there a refund policy?",
     "Can I learn while working a full-time job?",
+  ]),
+  freestack: pickFaqs([
+    "Is Free Stack actually free?",
+    "What happens after Free Stack ends?",
+    "How is Free Stack different from the paid tracks?",
   ]),
 };

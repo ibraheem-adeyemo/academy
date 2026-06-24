@@ -9,6 +9,7 @@ import {
 import { WHATSAPP_LINK } from "@/lib/tracks";
 
 const courseLinks = [
+  { label: "Free Stack", href: "/freestack" },
   { label: "Frontend", href: "/frontend" },
   { label: "Backend", href: "/backend" },
   { label: "Fullstack", href: "/fullstack" },

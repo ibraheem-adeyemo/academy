@@ -3,6 +3,7 @@ import {
   IconBriefcase,
   IconCode,
   IconDeviceDesktop,
+  IconGift,
   IconServer2,
   IconStack2,
   IconUser,
@@ -111,10 +112,10 @@ export default function Home() {
           </div>
           <div>
             <p className="text-2xl font-semibold text-white sm:text-4xl">
-              3 Tracks
+              4 Tracks
             </p>
             <p className="mt-1 text-xs text-light-green sm:text-base">
-              Frontend, Backend, Fullstack
+              Free Stack, Frontend, Backend, Fullstack
             </p>
           </div>
           <div>
@@ -136,8 +137,20 @@ export default function Home() {
             subheading="All tracks are beginner-friendly. Pick based on where you want to go."
           />
         </FadeIn>
-        <div className="mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <FadeIn delay={0}>
+            <TrackCard
+              icon={<IconGift size={24} aria-hidden="true" />}
+              badge="100% Free"
+              badgeVariant="orange"
+              title="Free Stack"
+              description="Our free, intensive introduction to web development. Learn the fundamentals and build one real project — at zero cost."
+              duration="8 weeks"
+              level="Complete beginner"
+              href="/freestack"
+            />
+          </FadeIn>
+          <FadeIn delay={0.05}>
             <TrackCard
               icon={<IconDeviceDesktop size={24} aria-hidden="true" />}
               badge="Beginner friendly"
@@ -162,7 +175,7 @@ export default function Home() {
               highlight
             />
           </FadeIn>
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.15}>
             <TrackCard
               icon={<IconStack2 size={24} aria-hidden="true" />}
               badge="Best value"

@@ -52,6 +52,7 @@ export default function TrackPage({
   badge,
 }: Track) {
   const styles = colourStyles[colour];
+  const isFree = price.toLowerCase() === "free";
 
   return (
     <>
@@ -191,13 +192,15 @@ export default function TrackPage({
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <FadeIn>
-            <SectionHeader heading="Investment" align="left" />
+            <SectionHeader heading={isFree ? "Cost" : "Investment"} align="left" />
           </FadeIn>
           <FadeIn className="mt-8 rounded-card border border-gray-200 p-6 sm:p-10" delay={0.1}>
             <p className={`text-4xl font-semibold sm:text-5xl ${styles.text}`}>
               {price}
             </p>
-            <p className="mt-1 text-muted">One-time programme fee</p>
+            <p className="mt-1 text-muted">
+              {isFree ? "No payment required, ever." : "One-time programme fee"}
+            </p>
 
             <div className="mt-8">
               <h3 className="font-semibold text-dark-text">
@@ -217,29 +220,33 @@ export default function TrackPage({
               </ul>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-card border border-gray-200 p-4">
-                <p className="font-semibold text-dark-text">Full payment</p>
-                <p className="mt-1 text-muted">{price} paid at once</p>
+            {!isFree && (
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-card border border-gray-200 p-4">
+                  <p className="font-semibold text-dark-text">Full payment</p>
+                  <p className="mt-1 text-muted">{price} paid at once</p>
+                </div>
+                <div className="rounded-card border border-gray-200 p-4">
+                  <p className="font-semibold text-dark-text">
+                    2-instalment plan
+                  </p>
+                  <p className="mt-1 text-muted">
+                    2 x {formatInstalment(price)}
+                  </p>
+                </div>
               </div>
-              <div className="rounded-card border border-gray-200 p-4">
-                <p className="font-semibold text-dark-text">
-                  2-instalment plan
-                </p>
-                <p className="mt-1 text-muted">
-                  2 x {formatInstalment(price)}
-                </p>
-              </div>
-            </div>
+            )}
 
             <Link
               href="/apply"
               className="mt-8 block w-full rounded-btn bg-accent px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-accent/90 sm:w-auto sm:max-w-xs"
             >
-              Apply now — secure your spot
+              {isFree ? "Apply now — it's free" : "Apply now — secure your spot"}
             </Link>
             <p className="mt-4 text-sm text-muted">
-              We accept bank transfer. Payment details sent after application.
+              {isFree
+                ? "No payment details needed. We'll reach out via WhatsApp or email to confirm your seat."
+                : "We accept bank transfer. Payment details sent after application."}
             </p>
           </FadeIn>
         </div>

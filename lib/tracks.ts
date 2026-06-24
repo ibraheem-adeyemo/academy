@@ -9,7 +9,7 @@ export interface TrackProject {
 }
 
 export interface Track {
-  slug: "frontend" | "backend" | "fullstack";
+  slug: "frontend" | "backend" | "fullstack" | "freestack";
   title: string;
   tagline: string;
   duration: string;
@@ -22,7 +22,10 @@ export interface Track {
   badge: string;
 }
 
-export const tracks: Record<"frontend" | "backend" | "fullstack", Track> = {
+export const tracks: Record<
+  "frontend" | "backend" | "fullstack" | "freestack",
+  Track
+> = {
   frontend: {
     slug: "frontend",
     title: "Frontend Engineering",
@@ -275,6 +278,67 @@ export const tracks: Record<"frontend" | "backend" | "fullstack", Track> = {
       "You want the highest earning potential as a developer",
       "You're willing to invest 6 months of serious learning",
       "You want to stand out in a crowded developer job market",
+    ],
+  },
+  freestack: {
+    slug: "freestack",
+    title: "Free Stack",
+    tagline:
+      "Our 100% free, intensive introduction to web development. Learn the exact fundamentals our paid tracks build on, build one real project, and decide for yourself if software engineering is for you — at zero cost.",
+    duration: "8 weeks",
+    level: "Complete beginner",
+    price: "Free",
+    badge: "8-week programme",
+    colour: "orange",
+    modules: [
+      {
+        title: "Web foundations",
+        topics: [
+          "HTML5 semantics",
+          "CSS basics & the box model",
+          "Responsive layout basics",
+          "Browser DevTools introduction",
+        ],
+      },
+      {
+        title: "JavaScript basics",
+        topics: [
+          "Variables & data types",
+          "Functions & control flow",
+          "DOM manipulation basics",
+          "Working with events",
+        ],
+      },
+      {
+        title: "Git & GitHub basics",
+        topics: [
+          "Version control fundamentals",
+          "Creating your first repository",
+          "Pushing and tracking changes",
+        ],
+      },
+      {
+        title: "Capstone: Your first website",
+        topics: [
+          "Planning a simple personal webpage",
+          "Building and styling it from scratch",
+          "Publishing it live on the internet",
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: "Personal landing page",
+        description:
+          "A simple, responsive personal webpage built with HTML, CSS, and a touch of JavaScript — your first real project, live on the internet.",
+      },
+    ],
+    forWho: [
+      "You've never written a line of code before",
+      "You want to try coding before committing financially",
+      "You're curious whether software engineering is the right path for you",
+      "You can commit a few hours a week for 8 weeks",
+      "You're open to continuing into one of our paid tracks afterward — though it's not required",
     ],
   },
 };
